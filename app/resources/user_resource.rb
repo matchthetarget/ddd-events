@@ -18,6 +18,9 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :attended_events,
+               resource: EventResource
+
   many_to_many :commented_events,
                resource: EventResource
 
