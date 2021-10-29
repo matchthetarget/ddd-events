@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :attendances,
+             :dependent => :destroy
+
   has_many   :created_events,
              :class_name => "Event",
              :dependent => :destroy
