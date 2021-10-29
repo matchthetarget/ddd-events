@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :created_events,
+             :class_name => "Event",
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations
