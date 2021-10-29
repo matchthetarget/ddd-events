@@ -6,28 +6,20 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Name</dt>
-      <!-- Display name start -->
       <dd><%= event.name %></dd>
-      <!-- Display name end -->
 
       <dt>Starts at</dt>
-      <!-- Display starts_at start -->
       <dd><%= event.starts_at %></dd>
-      <!-- Display starts_at end -->
 
       <dt>Ends at</dt>
-      <!-- Display ends_at start -->
       <dd><%= event.ends_at %></dd>
-      <!-- Display ends_at end -->
 
       <dt>User</dt>
-      <!-- Display user_id start -->
       <dd>
         <% if @event.user.present? %>
           <%= link_to event.user, event.user %>
         <% end %>
       </dd>
-      <!-- Display user_id end -->
 
     </dl>
 
@@ -36,7 +28,6 @@
         <%= link_to_show_or_back event, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link event start -->
       <div class="col">
         <% if current_user == @event.user %>
           <%= link_to edit_event_url(event), class: "btn btn-block btn-sm btn-outline-secondary" do %>
@@ -44,9 +35,7 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Edit link event end -->
 
-      <!-- Delete link event start -->
       <div class="col">
         <% if current_user == @event.user %>
           <%= link_to event, method: :delete, data: { confirm: "Do you really want to delete this event?" }, class: "btn btn-block btn-outline-secondary" do %>
@@ -54,7 +43,6 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Delete link event end -->
     </div>
   </div>
 
