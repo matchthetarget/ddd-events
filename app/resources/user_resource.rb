@@ -18,4 +18,7 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :commented_events,
+               resource: EventResource
+
 end
