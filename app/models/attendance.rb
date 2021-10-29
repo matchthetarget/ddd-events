@@ -1,5 +1,5 @@
 class Attendance < ApplicationRecord
-  enum attending: {"yes"=>0, "no"=>1, "maybe"=>2} 
+  enum attending: { "yes" => 0, "no" => 1, "maybe" => 2 }
 
   # Direct associations
 
@@ -16,5 +16,4 @@ class Attendance < ApplicationRecord
   def to_s
     attending
   end
-
 end

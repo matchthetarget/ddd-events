@@ -13,5 +13,4 @@ class AttendanceResource < ApplicationResource
   belongs_to :user
 
   # Indirect associations
-
 end

@@ -2,22 +2,22 @@ class Event < ApplicationRecord
   # Direct associations
 
   has_many   :comments,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :attendances,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :user
 
   # Indirect associations
 
   has_many   :attending_users,
-             :through => :comments,
-             :source => :user
+             through: :comments,
+             source: :user
 
   has_many   :commenters,
-             :through => :comments,
-             :source => :user
+             through: :comments,
+             source: :user
 
   # Validations
 
@@ -26,5 +26,4 @@ class Event < ApplicationRecord
   def to_s
     name
   end
-
 end

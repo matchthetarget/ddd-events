@@ -1,27 +1,26 @@
 class User < ApplicationRecord
-  
   include JwtToken
-# Direct associations
+  # Direct associations
 
   has_many   :comments,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :attendances,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :created_events,
-             :class_name => "Event",
-             :dependent => :destroy
+             class_name: "Event",
+             dependent: :destroy
 
   # Indirect associations
 
   has_many   :attended_events,
-             :through => :comments,
-             :source => :event
+             through: :comments,
+             source: :event
 
   has_many   :commented_events,
-             :through => :comments,
-             :source => :event
+             through: :comments,
+             source: :event
 
   # Validations
 

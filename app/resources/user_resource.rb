@@ -23,5 +23,4 @@ class UserResource < ApplicationResource
 
   many_to_many :commented_events,
                resource: EventResource
-
 end
