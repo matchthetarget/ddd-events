@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :current_user_must_be_event_user, only: [:edit, :update, :destroy] 
+
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
@@ -59,6 +61,14 @@ class EventsController < ApplicationController
 
 
   private
+
+  def current_user_must_be_event_user
+    set_event
+    unless current_user == @event.user
+      redirect_back fallback_location: root_path, alert: "You are not authorized for that."
+    end
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
