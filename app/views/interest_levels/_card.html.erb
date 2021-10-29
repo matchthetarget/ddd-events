@@ -1,0 +1,49 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Interest Level #<%= interest_level.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Level</dt>
+      <dd><%= interest_level.level %></dd>
+
+      <dt>User</dt>
+      <dd>
+        <% if @interest_level.user.present? %>
+          <%= link_to interest_level.user, interest_level.user %>
+        <% end %>
+      </dd>
+
+      <dt>Event</dt>
+      <dd>
+        <% if @interest_level.event.present? %>
+          <%= link_to interest_level.event, interest_level.event %>
+        <% end %>
+      </dd>
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back interest_level, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <div class="col">
+        <%= link_to edit_interest_level_url(interest_level), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+
+      <div class="col">
+        <%= link_to interest_level, method: :delete, data: { confirm: "Do you really want to delete this interest_level?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(interest_level.updated_at) %> ago
+  </div>
+</div>
