@@ -13,6 +13,10 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :attended_events,
+             :through => :comments,
+             :source => :event
+
   has_many   :commented_events,
              :through => :comments,
              :source => :event

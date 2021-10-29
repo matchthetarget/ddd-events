@@ -14,6 +14,8 @@ RSpec.describe User, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:attended_events) }
+
     it { should have_many(:commented_events) }
 
     end

@@ -14,6 +14,8 @@ RSpec.describe Event, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:attending_users) }
+
     it { should have_many(:commenters) }
 
     end
