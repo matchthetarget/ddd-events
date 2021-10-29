@@ -9,6 +9,8 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :comments
+
   has_many   :attendances
 
   has_many   :created_events,
