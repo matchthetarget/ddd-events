@@ -12,12 +12,20 @@
 
       <dt>User</dt>
       <!-- Display user_id start -->
-      <dd><%= attendance.user_id %></dd>
+      <dd>
+        <% if @attendance.user.present? %>
+          <%= link_to attendance.user, attendance.user %>
+        <% end %>
+      </dd>
       <!-- Display user_id end -->
 
       <dt>Event</dt>
       <!-- Display event_id start -->
-      <dd><%= attendance.event_id %></dd>
+      <dd>
+        <% if @attendance.event.present? %>
+          <%= link_to attendance.event, attendance.event %>
+        <% end %>
+      </dd>
       <!-- Display event_id end -->
 
     </dl>
