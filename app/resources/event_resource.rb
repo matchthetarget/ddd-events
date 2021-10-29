@@ -9,6 +9,8 @@ class EventResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :attendances
+
   belongs_to :user
 
   # Indirect associations
