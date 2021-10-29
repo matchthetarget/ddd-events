@@ -16,7 +16,7 @@
 
     <%= f.label :attending %>
     <!-- Input for attending start -->
-    <%= f.number_field :attending, class: attending_class, placeholder: "Enter attending" %>
+    <%= f.select :attending, options_for_select(Attendance.attendings.keys), {}, class: "form-control" %>
     <!-- Input for attending end -->
     <% if attending_was_invalid %>
       <% attendance.errors.full_messages_for(:attending).each do |message| %>

@@ -7,7 +7,7 @@
     <%= f.label :attending %>
 
     <!-- Input for attending start -->
-    <%= f.text_field :attending, class: "form-control" %>
+    <%= f.select :attending, options_for_select(Attendance.attendings.keys), {}, class: "form-control" %>
     <!-- Input for attending end -->
   </div>
   <!-- Label and input for attending end -->
