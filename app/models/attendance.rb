@@ -3,6 +3,8 @@ class Attendance < ApplicationRecord
 
   # Direct associations
 
+  belongs_to :event
+
   belongs_to :user
 
   # Indirect associations
