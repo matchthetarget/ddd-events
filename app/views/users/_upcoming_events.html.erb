@@ -12,7 +12,11 @@
 
       </li>
     <% end %>
-    <%= "You don't have any upcoming events" if current_user.interested_events.where(starts_at: Date.today..).count == 0 %>
+    <% if current_user.interested_events.where(starts_at: Date.today..).count == 0 %>
+    <li class="list-group-item">
+      You don't have any upcoming events
+    </li>
+    <% end %>
 
   </ul>
 </div>

@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_11_03_152517) do
     t.datetime "ends_at"
     t.integer "user_id", null: false
     t.string "address"
+    t.text "details"
     t.string "photo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
