@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Upcoming Events
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% current_user.interested_events.where(starts_at: Date.today..).each do |event| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <a href="/events/<%= event.id %>">
+          <%= event %>
+        </a>
+
+      </li>
+    <% end %>
+    <%= "You don't have any upcoming events" if current_user.interested_events.where(starts_at: Date.today..).count == 0 %>
+
+  </ul>
+</div>

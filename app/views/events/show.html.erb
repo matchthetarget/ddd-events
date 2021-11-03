@@ -12,12 +12,15 @@
 
 <div class="row justify-content-center mb-3">
   <div class="col-md-8">
-    <%= render partial: "events/event_interest_levels" %>
+    <div class="card">
+      <div class="card-body">
+        Going <%= @event.interest_levels.going.count %> · Interested <%= @event.interest_levels.interested.not_going.count %> · Not Interested <%= @event.interest_levels.not_interested.count %>
+        <div class="text-muted">
+          Share this event with your friends
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<div class="row justify-content-center mb-3">
-  <div class="col-md-8">
-    <%= render partial: "events/event_interested_attendees" %>
-  </div>
-</div>

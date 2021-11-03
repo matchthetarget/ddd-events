@@ -1,5 +1,11 @@
 <div class="card mb-3">
-  <img src="https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png" class="card-img-top" alt="...">
+  <div class="d-flex justify-content-center">
+  <% if event.photo.present? %>
+    <%= cl_image_tag event.photo, class: "card-img-top", style: "max-width: 500px" %>
+  <% else %>
+    <img src="https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png" style="max-width: 500px" class="card-img-top" alt="...">
+  <% end %>
+  </div>
   <div class="card-body">
       <h5 class="card-title">
         <%= event.name %>
