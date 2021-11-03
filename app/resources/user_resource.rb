@@ -9,18 +9,15 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
-  has_many   :comments
+  has_many   :interest_levels
 
-  has_many   :attendances
+  has_many   :comments
 
   has_many   :created_events,
              resource: EventResource
 
   # Indirect associations
 
-  many_to_many :attended_events,
-               resource: EventResource
-
-  many_to_many :commented_events,
+  many_to_many :interested_events,
                resource: EventResource
 end

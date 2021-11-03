@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @interest_level = InterestLevel.new
     @comment = Comment.new
-    @attendance = Attendance.new
     @event = Event.new
   end
 

@@ -2,10 +2,11 @@ class User < ApplicationRecord
   include JwtToken
   # Direct associations
 
-  has_many   :comments,
+  has_many   :interest_levels,
+             -> { interested_or_going },
              dependent: :destroy
 
-  has_many   :attendances,
+  has_many   :comments,
              dependent: :destroy
 
   has_many   :created_events,
@@ -14,12 +15,8 @@ class User < ApplicationRecord
 
   # Indirect associations
 
-  has_many   :attended_events,
-             through: :comments,
-             source: :event
-
-  has_many   :commented_events,
-             through: :comments,
+  has_many   :interested_events,
+             through: :interest_levels,
              source: :event
 
   # Validations

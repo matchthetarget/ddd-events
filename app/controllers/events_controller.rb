@@ -6,13 +6,17 @@ class EventsController < ApplicationController
 
   def index
     @q = Event.ransack(params[:q])
-    @events = @q.result(distinct: true).includes(:user, :attendances,
-                                                 :comments, :commenters, :attending_users).page(params[:page]).per(10)
+    @events = @q.result(distinct: true).includes(:user, :comments,
+                                                 :interest_levels, :interested_attendees).page(params[:page]).per(10)
+    @location_hash = Gmaps4rails.build_markers(@events.where.not(address_latitude: nil)) do |event, marker|
+      marker.lat event.address_latitude
+      marker.lng event.address_longitude
+    end
   end
 
   def show
+    @interest_level = InterestLevel.new
     @comment = Comment.new
-    @attendance = Attendance.new
   end
 
   def new
@@ -69,6 +73,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :starts_at, :ends_at, :user_id)
+    params.require(:event).permit(:name, :starts_at, :ends_at, :user_id,
+                                  :address, :photo)
   end
 end

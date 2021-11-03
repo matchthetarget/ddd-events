@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     scope module: "api/v1", as: "api" do
       resources :comments
 
-      resources :attendances
+      resources :interest_levels
 
       resources :events
 
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root to: "events#index"
   resources :comments
-  resources :attendances
+  resources :interest_levels
   resources :events
   devise_for :users
   resources :users

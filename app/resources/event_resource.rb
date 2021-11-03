@@ -6,20 +6,19 @@ class EventResource < ApplicationResource
   attribute :starts_at, :datetime
   attribute :ends_at, :datetime
   attribute :user_id, :integer
+  attribute :address, :string
+  attribute :photo, :string
 
   # Direct associations
 
-  has_many   :comments
+  has_many   :interest_levels
 
-  has_many   :attendances
+  has_many   :comments
 
   belongs_to :user
 
   # Indirect associations
 
-  many_to_many :attending_users,
-               resource: UserResource
-
-  many_to_many :commenters,
+  many_to_many :interested_attendees,
                resource: UserResource
 end

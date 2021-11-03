@@ -21,6 +21,18 @@
         <% end %>
       </dd>
 
+      <dt>Address</dt>
+      <dd>
+        <div>
+          <%= render partial: "events/one_photo_map" %>
+        </div>
+      </dd>
+
+      <dt>Photo</dt>
+      <dd>
+        <%= cl_image_tag @event.photo, class: "img-fluid" %>
+      </dd>
+
     </dl>
 
     <div class="row">

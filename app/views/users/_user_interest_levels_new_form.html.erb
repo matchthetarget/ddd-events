@@ -1,0 +1,18 @@
+<%= form_with(model: @interest_level, local: true) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :level %>
+
+    <%= f.select :level, options_for_select(InterestLevel.levels.keys), {}, class: "form-control" %>
+  </div>
+
+  <%= f.hidden_field :user_id, value: @user.id %>
+
+  <div class="form-group">
+    <%= f.label :event_id %>
+
+    <%= f.collection_select :event_id, Event.all, :id, :to_s, {}, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Create interest level", class: "btn btn-block btn-outline-secondary" %>
+<% end %>
