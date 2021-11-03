@@ -9,13 +9,26 @@
 
   <ul class="list-group list-group-flush">
     <% @event.comments.each do |comment| %>
-      <li class="list-group-item d-flex align-items-center justify-content-between">
-        <%= link_to comment, comment %>
+      <li class="media py-4 mx-1 border-top pl-3">
+        <div class="media-body">
+          <div class="d-flex">
+            <h5 class="mt-1"><%= comment.user.full_name %></h5>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p><%= comment.body %></p>
 
-        <%= link_to comment, method: :delete, data: { confirm: "Do you really want to delete this comment" } do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
-
+            <% if current_user == comment.user %>
+              <div class="d-flex">
+                <%= link_to edit_comment_url(comment), class: "mr-4" do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+                <%= link_to comment, class: "mr-4", method: :delete do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </li>
     <% end %>
 

@@ -12,12 +12,54 @@
 
 <div class="row justify-content-center mb-3">
   <div class="col-md-8">
-    <%= render partial: "events/event_interest_levels" %>
+    <div class="card">
+      <div class="card-body">
+        Going <%= @event.interest_levels.going.count %> · Interested <%= @event.interest_levels.interested.not_going.count %> · Not Interested <%= @event.interest_levels.not_interested.count %>
+        <div class="text-muted">
+          Share this event with your friends
+        </div>
+        <% if @event.interested_attendees.include?(current_user) %>
+          <div>
+            <% interest_level = @event.interest_levels.find_by(event: @event, user: current_user) %>
+            <% level = interest_level.level %>
+            <p>
+            <% if level == "going"%>
+              You are <strong><%= level %></strong> to this event.
+            <% elsif level == "not_interested" %>
+              You are <strong>not interested</strong>  in this event.
+            <% else %>
+              You are <strong><%= level %></strong>  in this event.
+            <% end %>
+            <%= link_to interest_level, method: :delete, data: { confirm: "Do you really want to delete your response?" }, class: "border-1 p-1 text-danger" do %>
+              Remove <i class="fas fa-trash-alt"></i>
+            <% end %>
+            </p>
+          </div>
+        <% else %>
+          <div class="d-flex">
+            <%= form_with(model: @event.interest_levels.new, local: true) do |f| %>
+              <%= f.hidden_field :event_id, value: @event.id %>
+              <%= f.hidden_field :level, value: "going" %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.submit "Going", class: "btn btn-sm btn-outline-success" %>
+            <% end %>
+            <%= form_with(model: @event.interest_levels.new, local: true) do |f| %>
+              <%= f.hidden_field :event_id, value: @event.id %>
+              <%= f.hidden_field :level, value: "interested" %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.submit "Interested", class: "btn btn-sm btn-outline-secondary" %>
+            <% end %>
+            <%= form_with(model: @event.interest_levels.new, local: true) do |f| %>
+              <%= f.hidden_field :event_id, value: @event.id %>
+              <%= f.hidden_field :level, value: "not_interested" %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.submit "Not Interested", class: "btn btn-sm btn-outline-danger" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<div class="row justify-content-center mb-3">
-  <div class="col-md-8">
-    <%= render partial: "events/event_interested_attendees" %>
-  </div>
-</div>

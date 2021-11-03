@@ -91,6 +91,28 @@
     <% end %>
   </div>
   <div class="form-group">
+    <% details_class = "form-control" %>
+    <% details_was_invalid = event.errors.include?(:details) %>
+
+    <% if was_validated %>
+      <% if details_was_invalid %>
+        <% details_class << " is-invalid" %>
+      <% else %>
+        <% details_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :details %>
+    <%= f.text_area :details, class: details_class, placeholder: "Enter details" %>
+    <% if details_was_invalid %>
+      <% event.errors.full_messages_for(:details).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="form-group">
     <% photo_class = "form-control" %>
     <% photo_was_invalid = event.errors.include?(:photo) %>
 

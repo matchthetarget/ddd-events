@@ -19,11 +19,11 @@ class InterestLevelsController < ApplicationController
     @interest_level = InterestLevel.new(interest_level_params)
 
     if @interest_level.save
-      message = "InterestLevel was successfully created."
+      message = "Your response was successfully created."
       if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
         redirect_back fallback_location: request.referer, notice: message
       else
-        redirect_to @interest_level, notice: message
+        redirect_to @interest_level.event, notice: message
       end
     else
       render :new
@@ -41,11 +41,11 @@ class InterestLevelsController < ApplicationController
 
   def destroy
     @interest_level.destroy
-    message = "InterestLevel was successfully deleted."
+    message = "Your response was successfully deleted."
     if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
       redirect_back fallback_location: request.referer, notice: message
     else
-      redirect_to interest_levels_url, notice: message
+      redirect_to @interest_level.event, notice: message
     end
   end
 
