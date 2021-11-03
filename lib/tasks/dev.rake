@@ -53,36 +53,45 @@ namespace :dev do
         user.save
       end
     end
+    Event.destroy_all
 
     events = [
-      { id: 10, name: "Rooftop Dia De Los Muertos Party", address: "Joy District", starts_at: "11-01-2021 07:00 PM CDT", ends_at: "02-11-2021 02:00 AM CDT" },
-      { id: 11, name: "Lightscape At Chicago Botanic Garden", address: "Chicago Botanic Garden", starts_at: "11-12-2021 05:30 PM CDT", ends_at: "11-12-2021 09:00 PM CDT" },
-      { id: 12, name: "The Wood Brothers", address: "The Riviera Theatre", starts_at: "06-11-2021 08:00 PM CDT", ends_at: "07-11-2021 00:00 AM CDT" },
-      { id: 13, name: "Frida Festival", address: "Dvorak Park", starts_at: "06-11-2021 11:00 AM CDT", ends_at: "06-11-2021 05:30 PM CDT" },
-      { id: 14, name: "Friday Late Night Standup Comedy", address: "Laugh Factory", starts_at: "05-11-2021 11:00 PM CDT", ends_at: "06-11-2021 01:00 AM CDT" },
-      { id: 15, name: "360 Sky Yoga", address: "360 Chicago", starts_at: "07-11-2021 09:00 AM CDT", ends_at: "07-11-2021 10:00 AM CDT" },
-      { id: 16, name: "Cirque Alcatraz '21 Tour", address: "Gurnee Mills", starts_at: "04-11-2021 07:30 PM CDT", ends_at: "04-11-2021 09:30 PM CDT" },
-      { id: 17, name: "C2E2 2021", address: "C2E2", starts_at: "10-12-2021 10:00 AM CST", ends_at: "12-12-2021 05:00 PM CST" },
-      { id: 18, name: "Haru Nemuri", address: "Sleeping Village", starts_at: "02-11-2021 08:00 PM CDT", ends_at: "02-11-2021 11:30 PM CDT" },
-      { id: 19, name: "Tree Lighting", address: "Gallagher Way Chicago", starts_at: "29-11-2021 06:00 PM CST", ends_at: "30-11-2021 00:00 AM CST" },
-      { id: 20, name: "Decemberg: Winter in the Woods 2021", address: "Chicago, IL", starts_at: "11-12-2021 07:30 AM CST", ends_at: "12-12-2021 04:30 PM CST" },
-      { id: 21, name: "Pouya at Park West", address: "Park West", starts_at: "19-11-2021 07:00 PM CST", ends_at: "19-11-2021 10:30 PM CST" },
-      { id: 22, name: "Dog Admission Day", address: "The Morton Arboretum", starts_at: "07-11-2021 07:00 AM CST", ends_at: "07-11-2021 04:00 PM CST" },
-      { id: 23, name: "lovelytheband", address: "House of Blues Chicago", starts_at: "23-11-2021 05:00 PM CST", ends_at: "23-11-2021 08:00 PM CST" },
-      { id: 24, name: "Indoor Garage Sale", address: "Jean Shepherd Community Center", starts_at: "13-12-2021 10:00 AM CST", ends_at: "13-12-2021 03:00 PM CST" },
-      { id: 25, name: "Open Jam", address: "Uptown Plainfield", starts_at: "10-01-2022 08:00 PM CST", ends_at: "11-01-2022 00:00 AM CST" },
-      { id: 26, name: "Open Jam", address: "Uptown Plainfield", starts_at: "02-12-2021 08:00 PM CST", ends_at: "02-12-2021 00:00 AM CST" },
-      { id: 27, name: "Bingo", address: "The Hideout", starts_at: "01-11-2021 06:30 PM CDT", ends_at: "01-11-2021 08:00 PM CDT" },
-      { id: 28, name: "Bingo", address: "The Hideout", starts_at: "01-12-2021 06:30 PM CST", ends_at: "01-12-2021 08:00 PM CST" },
-      { id: 29, name: "Highland Park Class of 2010 Eleven Year Reunion", address: "Rizzo's Bar & Inn", starts_at: "27-11-2021 08:00 PM CST", ends_at: "27-11-2021 11:00 PM CST" },
-      { id: 30, name: "CHVRCHES with special guest Donna Missal", address: "Byline Bank Aragon Ballroom", starts_at: "19-12-2021 07:30 PM CST", ends_at: "19-12-2021 11:00 PM CST" },
+      { id: 10, user_id: 100, name: "Rooftop Dia De Los Muertos Party", address: "Joy District", starts_at: "11-01-2021 07:00 PM CDT", ends_at: "02-11-2021 02:00 AM CDT" },
+      { id: 11, user_id: 82, name: "Lightscape At Chicago Botanic Garden", address: "Chicago Botanic Garden", starts_at: "11-12-2021 05:30 PM CDT", ends_at: "11-12-2021 09:00 PM CDT" },
+      { id: 12, user_id: 119, name: "The Wood Brothers", address: "The Riviera Theatre", starts_at: "06-11-2021 08:00 PM CDT", ends_at: "07-11-2021 00:00 AM CDT" },
+      { id: 13, user_id: 81, name: "Frida Festival", address: "Dvorak Park", starts_at: "06-11-2021 11:00 AM CDT", ends_at: "06-11-2021 05:30 PM CDT" },
+      { id: 14, user_id: 82, name: "Friday Late Night Standup Comedy", address: "Laugh Factory", starts_at: "05-11-2021 11:00 PM CDT", ends_at: "06-11-2021 01:00 AM CDT" },
+      { id: 15, user_id: 111, name: "360 Sky Yoga", address: "360 Chicago", starts_at: "07-11-2021 09:00 AM CDT", ends_at: "07-11-2021 10:00 AM CDT" },
+      { id: 16, user_id: 81, name: "Cirque Alcatraz '21 Tour", address: "Gurnee Mills", starts_at: "04-11-2021 07:30 PM CDT", ends_at: "04-11-2021 09:30 PM CDT" },
+      { id: 17, user_id: 111, name: "C2E2 2021", address: "C2E2", starts_at: "10-12-2021 10:00 AM CST", ends_at: "12-12-2021 05:00 PM CST" },
+      { id: 18, user_id: 98, name: "Haru Nemuri", address: "Sleeping Village", starts_at: "02-11-2021 08:00 PM CDT", ends_at: "02-11-2021 11:30 PM CDT" },
+      { id: 19, user_id: 81, name: "Tree Lighting", address: "Gallagher Way Chicago", starts_at: "29-11-2021 06:00 PM CST", ends_at: "30-11-2021 00:00 AM CST" },
+      { id: 20, user_id: 104, name: "Decemberg: Winter in the Woods 2021", address: "Chicago, IL", starts_at: "11-12-2021 07:30 AM CST", ends_at: "12-12-2021 04:30 PM CST" },
+      { id: 21, user_id: 92, name: "Pouya at Park West", address: "Park West", starts_at: "19-11-2021 07:00 PM CST", ends_at: "19-11-2021 10:30 PM CST" },
+      { id: 22, user_id: 111, name: "Dog Admission Day", address: "The Morton Arboretum", starts_at: "07-11-2021 07:00 AM CST", ends_at: "07-11-2021 04:00 PM CST" },
+      { id: 23, user_id: 102, name: "lovelytheband", address: "House of Blues Chicago", starts_at: "23-11-2021 05:00 PM CST", ends_at: "23-11-2021 08:00 PM CST" },
+      { id: 24, user_id: 92, name: "Indoor Garage Sale", address: "Jean Shepherd Community Center", starts_at: "13-12-2021 10:00 AM CST", ends_at: "13-12-2021 03:00 PM CST" },
+      { id: 25, user_id: 97, name: "Open Jam", address: "Uptown Plainfield", starts_at: "10-01-2022 08:00 PM CST", ends_at: "11-01-2022 00:00 AM CST" },
+      { id: 26, user_id: 102, name: "Open Jam", address: "Uptown Plainfield", starts_at: "02-12-2021 08:00 PM CST", ends_at: "02-12-2021 00:00 AM CST" },
+      { id: 27, user_id: 92, name: "Bingo", address: "The Hideout", starts_at: "01-11-2021 06:30 PM CDT", ends_at: "01-11-2021 08:00 PM CDT" },
+      { id: 28, user_id: 112, name: "Bingo", address: "The Hideout", starts_at: "01-12-2021 06:30 PM CST", ends_at: "01-12-2021 08:00 PM CST" },
+      { id: 29, user_id: 102, name: "Highland Park Class of 2010 Eleven Year Reunion", address: "Rizzo's Bar & Inn", starts_at: "27-11-2021 08:00 PM CST", ends_at: "27-11-2021 11:00 PM CST" },
+      { id: 30, user_id: 103, name: "CHVRCHES with special guest Donna Missal", address: "Byline Bank Aragon Ballroom", starts_at: "19-12-2021 07:30 PM CST", ends_at: "19-12-2021 11:00 PM CST" },
     ]
 
-    Event.insert_all!(events)
+    events.each do |e|
+      Event.create(e)
+    end
     Event.find_each do |event|
       event.update(details: Faker::ChuckNorris.fact)
+      rand(10..25).times do
+        user = User.all.sample
+        user.interest_levels.create(event: event, level: InterestLevel.levels.keys.sample )
+        user.comments.create(event: event, body:  Faker::TvShows::Friends.quote )
+      end
     end
 
-    
+
+
   end
 end
