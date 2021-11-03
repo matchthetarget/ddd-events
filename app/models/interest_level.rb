@@ -11,6 +11,8 @@ class InterestLevel < ApplicationRecord
 
   # Validations
 
+  validates :user_id, uniqueness: { scope: ["event_id"] }
+
   validates :level, presence: true
 
   # Scopes
