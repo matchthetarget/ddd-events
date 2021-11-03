@@ -1,0 +1,47 @@
+<div class="card mb-3">
+  <img src="https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png" class="card-img-top" alt="...">
+  <div class="card-body">
+      <h5 class="card-title">
+        <%= event.name %>
+      </h5>
+
+
+      <h6 class="card-subtitle">
+        <%= event.starts_at.strftime("%A, %B %-d, %Y at %-l:%M %p") %>
+      </h6>
+      <% if event.user.present? %>
+        Hosted by: <%= link_to event.user, event.user %>
+      <% end %>
+
+
+    <div class="row my-2">
+      <div class="col">
+          <%= link_to event_url(event), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-share"></i>
+          <% end %>
+      </div>
+    </div>
+
+    <div class="col-row d-flex">
+      <div class="col-6">
+        <% if current_user == event.user %>
+          <%= link_to edit_event_url(event), class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="col-6">
+        <% if current_user == event.user %>
+          <%= link_to event, method: :delete, data: { confirm: "Do you really want to delete this event?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(event.updated_at) %> ago
+  </div>
+</div>

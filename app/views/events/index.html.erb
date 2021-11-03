@@ -10,6 +10,25 @@
   </div>
 </div>
 
+
+<div class="row">
+  <div class="col-md-3 mb-3">
+    <%= render partial: "events/events_search_form" %>
+  </div>
+
+  <div class="col-md-9">
+    <% @events.each_slice(3) do |slice| %>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card-deck">
+            <%= render collection: slice, partial: "index_card", as: :event %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-md-12 mb-3">
     <%= render partial: "events/events_search_form" %>
