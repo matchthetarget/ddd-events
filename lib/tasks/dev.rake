@@ -1,7 +1,12 @@
 namespace :dev do
   desc "Pre-populate database with dummy data"
   task prime: :environment do
-
+    if Rails.env.production?
+      ActiveRecord::Base.connection.tables.each do |t|
+        ActiveRecord::Base.connection.reset_pk_sequence!(t)
+      end
+    end
+    Event.destroy_all
     User.destroy_all
     users = [
       {id: 81, first_name: "Galen", last_name: Faker::Name.last_name, email: "galen@example.com", created_at: "2015-01-19 09:24:34", updated_at: "2019-10-08 10:25:00"},
@@ -53,7 +58,7 @@ namespace :dev do
         user.save
       end
     end
-    Event.destroy_all
+    
 
     events = [
       { id: 10, user_id: 100, name: "Rooftop Dia De Los Muertos Party", address: "Joy District", starts_at: "11-01-2021 07:00 PM CDT", ends_at: "02-11-2021 02:00 AM CDT" },
@@ -87,7 +92,7 @@ namespace :dev do
       rand(10..25).times do
         user = User.all.sample
         user.interest_levels.create(event: event, level: InterestLevel.levels.keys.sample )
-        user.comments.create(event: event, body:  Faker::TvShows::Friends.quote )
+        user.comments.create(event: event, body:  Faker::Quotes::Shakespeare.as_you_like_it_quote )
       end
     end
 
